@@ -3,13 +3,10 @@
        <input type="text" placeholder="Search"/>
     <div class="img-item">
     <div v-for="(item, index) in items" :key="index">
-       
       <img :src="item.Url"/>
       <h2>{{item.Name}}</h2>
       <h2>{{item.Type}}</h2>
-      <form v-on:submit.prevent="submitForm">
-       <button type="submit">Delete</button>
-      </form>
+       <button type="submit" v-on:click = "deleteButton(index)">Delete</button>
     </div>
     </div>
   </div>
@@ -144,12 +141,8 @@ export default {
     };
   },
   methods: {
-      submitForm() {
-      this.clearForm();
-    },
        deleteButton(index) {
-    //   this.$emit('Delete')
-      this.item.splice(index, 1);
+      this.items.splice(index, 1);
     }
   }
 }
